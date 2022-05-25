@@ -1,0 +1,25 @@
+CREATE TABLE employee_details(
+employee_id NUMBER(10) GENERATED AS IDENTITY,
+name VARCHAR(50),
+salary NUMBER(10,2)
+);
+
+INSERT INTO employee_details(name,salary)
+VALUES('Santosh Honrao',1000);
+INSERT INTO employee_details(name,salary)
+VALUES('Sachin Tendulkr ',10000);
+INSERT INTO employee_details(name,salary)
+VALUES('Virat Kohli',100089);
+
+SELECT * FROM employee_details;
+
+
+UPDATE employee_details SET salary=30000,name='santosh hon' WHERE employee_id=4;
+
+DELETE employee_details WHERE employee_id=4;
+
+SELECT * FROM employee_details
+WHERE employee_id=1;
+
+
+  

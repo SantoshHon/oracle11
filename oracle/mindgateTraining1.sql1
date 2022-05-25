@@ -1,0 +1,372 @@
+SELECT * FROM sales_order ;
+INSERT INTO sales_order(s_order_no,s_order_date,client_no,dely_type ,billed_yn,salesman_no,dely_date,order_status) 
+VALUES('O19001',TO_DATE('12-Jan-1996','DD-MM-YYYY'),'C00001','F','N','S00001',TO_DATE('20-Jan-1996','DD-MM-YYYY'),'in process');
+
+INSERT INTO sales_order(s_order_no,s_order_date,client_no,dely_type ,billed_yn,salesman_no,dely_date,order_status) 
+VALUES('O19002',TO_DATE('25-Jan-1996','DD-MM-YYYY'),'C00002','P','N','S00002',TO_DATE('27-Jan-1996','DD-MM-YYYY'),'Canceled');
+
+INSERT INTO sales_order(s_order_no,s_order_date,client_no,dely_type ,billed_yn,salesman_no,dely_date,order_status) 
+VALUES('O46865',TO_DATE('18-Feb-1996','DD-MM-YYYY'),'C00003','F','Y','S00003',TO_DATE('20-Feb-1996','DD-MM-YYYY'),'Fulfilled');
+
+
+INSERT INTO sales_order(s_order_no,s_order_date,client_no,dely_type ,billed_yn,salesman_no,dely_date,order_status) 
+VALUES('O19003',TO_DATE('03-Apr-1996','DD-MM-YYYY'),'C00001','F','Y','S00001',TO_DATE('07-Apr-1996','DD-MM-YYYY'),'Fulfilled');
+
+INSERT INTO sales_order(s_order_no,s_order_date,client_no,dely_type ,billed_yn,salesman_no,dely_date,order_status) 
+VALUES('O46866',TO_DATE('20-May-1996','DD-MM-YYYY'),'C00004','P','N','S00002',TO_DATE('22-May-1996','DD-MM-YYYY'),'Canceled');
+
+INSERT INTO sales_order(s_order_no,s_order_date,client_no,dely_type ,billed_yn,salesman_no,dely_date,order_status) 
+VALUES('O10008',TO_DATE('24-May-1996','DD-MM-YYYY'),'C00005','F','N','S00004',TO_DATE('26-May-1996','DD-MM-YYYY'),'in process');
+
+
+
+INSERT INTO sales_order(s_order_no,s_order_date,client_no,dely_type ,billed_yn,salesman_no,dely_date,order_status) 
+VALUES('O19002',TO_DATE('25-Jan-1996','DD-MM-YYYY'),'C00002','P','N','S00002',TO_DATE('27-Jan-1996','DD-MM-YYYY'),'cancelled');
+
+INSERT INTO sales_order(s_order_no,s_order_date,client_no,dely_type ,billed_yn,salesman_no,dely_date,order_status) 
+VALUES('O46865',TO_DATE('18-Feb-1996','DD-MM-YYYY'),'C00003','F','Y','S00003',TO_DATE('20-Feb-1996','DD-MM-YYYY'),'fulfilled');
+
+
+INSERT INTO sales_order(s_order_no,s_order_date,client_no,dely_type ,billed_yn,salesman_no,dely_date,order_status) 
+VALUES('O19003',TO_DATE('03-Apr-1996','DD-MM-YYYY'),'C00001','F','Y','S00001',TO_DATE('07-Apr-1996','DD-MM-YYYY'),'fulfilled');
+
+INSERT INTO sales_order(s_order_no,s_order_date,client_no,dely_type ,billed_yn,salesman_no,dely_date,order_status) 
+VALUES('O46866',TO_DATE('20-May-1996','DD-MM-YYYY'),'C00004','P','N','S00002',TO_DATE('22-May-1996','DD-MM-YYYY'),'cancelled');
+
+
+
+
+INSERT INTO sales_order(s_order_no,s_order_date,client_no,dely_type ,billed_yn,salesman_no,dely_date,order_status) 
+VALUES('O19002',TO_DATE('25-Jan-1996','DD-MM-YYYY'),'C00002','P','N','S00002',TO_DATE('27-Jan-1996','DD-MM-YYYY'),'Canceled');
+
+SELECT * FROM sales_order ;
+COMMIT;
+
+CREATE TABLE  sales_order_details(
+s_order_no VARCHAR(6),
+product_no VARCHAR(6),
+qty_ordered NUMBER(8),
+qty_disp   NUMBER(8),
+product_rate NUMBER(10,2),
+CONSTRAINT fk_s_order_no  FOREIGN KEY(s_order_no ) REFERENCES sales_order (s_order_no ),
+CONSTRAINT fk_product_no  FOREIGN KEY(product_no ) REFERENCES product_master (product_no )
+);
+COMMIT;
+DROP TABLE employee;
+
+CREATE TABLE employee(
+employee_id VARCHAR2(10),
+first_name VARCHAR(50) NOT NULL,
+last_name VARCHAR(50) NOT NULL,
+age NUMBER(3) NOT NULL,
+gender VARCHAR(6) NOT NULL,
+qualification VARCHAR(20) NOT NULL,
+salary NUMBER(7,2) NOT NULL,
+location VARCHAR(20) NOT NULL,
+CONSTRAINT pk_employee_id PRIMARY KEY(employee_id)
+
+);
+INSERT INTO employee values
+('MGS3498','Rohit','Thakur',23,'Male','B.E. Comp',29730,'Thane');
+
+INSERT INTO employee values
+('MGS3493','Priyanka','Tayde',25,'Female','B.E. Comp',29730,'Mumbai');
+
+INSERT INTO employee VALUES
+('MGS3509','Aruna','Vasave',24,'Female','B.E. Comp',29730,'Thane');
+INSERT INTO employee VALUES
+('MGS3499','Ravina','Suryawanshi',26,'Female','B.E. Comp',29730,'Mumbai');
+INSERT INTO employee VALUES
+('MGS3505','Kiran','Kadam',24,'Male','B.E. Extc',29730,'Thane');
+INSERT INTO employee VALUES
+('MGS3510','Chaitanya','Raykar',25,'Male','B.E. Civil',29730,'Thane');
+INSERT INTO employee VALUES
+('MGS3496','Santosh','Honrao',24,'Male','B.E. Mech',29730,'Mumbai');
+INSERT INTO employee VALUES
+('MGS3504','Shubham','Labde',24,'Male','B.E. Mech',29730,'Mumbai');
+INSERT INTO employee VALUES
+('MGS3502','Pravin','Yadav',25,'Male','B.E. Mech',29730,'Mumbai');
+INSERT INTO employee VALUES
+('MGS3516','Tejas','Zambare',23,'Male','B.E. Elec',29730,'Mumbai');
+INSERT INTO employee VALUES
+('MGS3500','Nitesh','Subhedar',24,'Male','B.E. Mech',29730,'Mumbai');
+INSERT INTO employee VALUES
+('MGS3508','Vaibhav','Tekude',23,'Male','B.E. Mech',29730,'Mumbai');
+INSERT INTO employee VALUES
+('MGS3491','Meraj','Shaikh',24,'Male','B.E. Mech',29730,'Mumbai');
+INSERT INTO employee VALUES
+('MGS3495','Shashank','Lokhande',24,'Male','B.E. Extc',29730,'Mumbai');
+INSERT INTO employee VALUES
+('MGS3507','Vinaya','Naik',24,'Female','B.E. Comps',29730,'Mumbai');
+INSERT INTO employee VALUES
+('MGS3597','Sanika','Manchekar',23,'Female','B.E. IT',29730,'Navi Mumbai');
+INSERT INTO employee VALUES
+('MGS3489','Dinesh','Saple',25,'Male','B.E. Elec',29730,'Thane');
+INSERT INTO employee VALUES
+('MGS3492','Paras','Gharu',25,'Male','B.E. Mech',29730,'Thane');
+INSERT INTO employee VALUES
+('MGS3490','Mahima','Dube',23,'Female','M.Sc - IT',29730,'Thane');
+INSERT INTO employee VALUES
+('MGS3506','Komal','More',23,'Female','BTech - Comp',29730,'Thane');
+INSERT INTO employee VALUES
+('MGS3503','Rahul','Bhatlavande',24,'Male','B.E. Comp',29730,'Thane');
+INSERT INTO employee VALUES
+('MGS3515','Harshal','Bhagade',24,'Male','B.E. Mech',29730,'Thane');
+INSERT INTO employee VALUES
+('MGS3494','Pratap','Bagwe',23,'Male','BTech Mech',29730,'Mumbai');
+
+SELECT * FROM employee;
+COMMIT;
+
+SELECT employee_id,first_name,salary FROM employee;
+
+SELECT employee_id,first_name,last_name ,salary FROM employee;
+
+SELECT employee_id,first_name || ' '|| last_name AS full_name,salary FROM employee;
+
+SELECT employee_id,first_name || ' '|| last_name AS full_name,salary,location FROM employee where location='Thane';
+
+UPDATE employee SET salary=salary*1.2 WHERE location ='Thane';
+SELECT * FROM  employee;
+COMMIT;
+UPDATE employee SET salary=salary*1.1 WHERE location ='Mumbai';
+SELECT * FROM  employee;
+COMMIT;
+UPDATE employee SET salary=salary*1.2 WHERE location ='Navi Mumbai';
+    SELECT * FROM  employee;
+COMMIT;
+
+ SELECT * FROM  employee ORDER BY first_name ;
+ SELECT * FROM  employee ORDER BY location ;
+ SELECT * FROM  employee ORDER BY location ,first_name;
+ SELECT * FROM  employee ORDER BY location DESC,first_name DESC;
+ SELECT * FROM employee WHERE qualification='B.E. Mech' OR qualification='B.E. Elec';
+ SELECT * FROM employee WHERE qualification IN('B.E. Mech','B.E. Elec')ORDER BY qualification;
+ SELECT * FROM employee WHERE qualification NOT IN('B.E. Mech','B.E. Elec')ORDER BY qualification;
+ 
+ SELECT * FROM employee WHERE age BETWEEN 20 AND 24 ORDER BY age;
+ SELECT * FROM employee WHERE age NOT BETWEEN 20 AND 24 ORDER BY age;
+ SELECT * FROM employee WHERE last_name LIKE('%kar');
+ SELECT * FROM employee WHERE last_name NOT LIKE('%kar');
+ 
+ SELECT * FROM employee WHERE location='Mumbai' AND gender='Male' ORDER BY first_name;
+ SELECT COUNT(gender) total_count FROM employee WHERE location='Thane' AND gender='Female' ;
+ SELECT SUM(salary) sum_salary,AVG(salary)avg_salary FROM employee WHERE location='Thane' ;
+ 
+SELECT location ,COUNT(location)count FROM employee GROUP BY location;
+
+SELECT qualification,SUM(salary) total_salary,COUNT(salary),MIN(salary),MAX(salary),AVG(salary) FROM employee GROUP BY qualification ORDER BY SUM(salary);
+
+SELECT qualification,SUM(salary) total_salary,COUNT(salary),MIN(salary),MAX(salary),AVG(salary) FROM employee   GROUP BY qualification  HAVING SUM(salary)>60000 ORDER BY SUM(salary);
+
+CREATE TABLE emp_details(
+emp_id NUMBER(5) NOT NULL,
+name VARCHAR(20) NOT NULL,
+salary  NUMBER(5) NOT NULL,
+dept_id NUMBER(5) NOT NULL
+);
+
+CREATE TABLE dept_details(
+dept_id NUMBER(5) NOT NULL,
+dept_name VARCHAR(20) NOT NULL
+
+);
+
+INSERT INTO dept_details VALUES(1,'IT');
+INSERT INTO dept_details VALUES(2,'Admin');
+INSERT INTO dept_details VALUES(3,'Finance');
+
+INSERT INTO emp_details  VALUES(101,'A',1000,1);
+INSERT INTO emp_details  VALUES(102,'B',1000,1);
+INSERT INTO emp_details  VALUES(103,'C',1000,2);
+INSERT INTO emp_details  VALUES(104,'D',1000,2);
+INSERT INTO emp_details  VALUES(105,'E',1000,3);
+
+SELECT * FROM emp_details;
+SELECT * FROM dept_details;
+COMMIT;
+
+SELECT * FROM emp_details, dept_details;
+
+SELECT * FROM emp_details JOIN dept_details ON emp_details.dept_id = dept_details.dept_id;
+SELECT * FROM emp_details e JOIN dept_details d 
+ON e.dept_id = d.dept_id;
+
+SELECT e.emp_id,e.salary,d.dept_id FROM emp_details e JOIN dept_details d 
+ON e.dept_id = d.dept_id;
+
+
+SELECT * FROM emp_details e LEFT JOIN deft_datails d ON e.dept_id=d.dept_id;
+
+SELECT * FROM emp_details e LEFT JOIN dept_details d 
+ON e.dept_id = d.dept_id;
+
+
+INSERT INTO emp_details VALUES(106,'F',1000,4);
+INSERT INTO emp_details VALUES(107,'G',1000,5);
+
+INSERT INTO dept_details VALUES(6,'Admin');
+INSERT INTO dept_details VALUES(7,'HR');
+
+SELECT * FROM emp_details e RIGHT JOIN dept_details d 
+ON e.dept_id = d.dept_id;
+
+
+SELECT * FROM emp_details e FULL JOIN dept_details d 
+ON e.dept_id = d.dept_id;
+
+
+
+
+CREATE TABLE employee_manager_details(
+employee_id NUMBER(10) NOT NULL,
+name VARCHAR(20) NOT NULL,
+salary NUMBER(10,2)NOT NULL,
+manager_id NUMBER(10)
+
+
+);
+INSERT INTO employee_manager_details
+VALUES(1,'Santosh',1000,NULL);
+
+INSERT INTO employee_manager_details
+VALUES(2,'Reema',1000,1);
+
+INSERT INTO employee_manager_details
+VALUES(3,'Seema',1000,2);
+INSERT INTO employee_manager_details
+VALUES(4,'Meena',1000,3);
+
+
+SELECT * FROM employee_manager_details;
+COMMIT;
+SELECT * FROM employee_manager_details e JOIN employee_manager_details M
+ON e.employee_id=m.manager_id;
+
+
+SELECT m.name||' reports to '||e.name AS Employee_And_Manager 
+FROM employee_manager_details e JOIN employee_manager_details M
+ON e.employee_id=m.manager_id;
+
+SELECT * FROM dual;
+
+SELECT SYSDATE FROM dual;
+SELECT EXTRACT(year FROM SYSDATE ) FROM dual;
+SELECT EXTRACT(month FROM SYSDATE ) FROM dual;
+SELECT EXTRACT(day FROM SYSDATE ) FROM dual;
+SELECT SYSDATE+1 FROM dual;
+SELECT SYSDATE-1 FROM dual;
+SELECT SYSDATE-30 FROM dual;
+SELECT SYSDATE+30 FROM dual;
+SELECT ADD_MONTHS(SYSDATE,1)FROM dual;
+SELECT ADD_MONTHS(SYSDATE,-1)FROM dual;
+SELECT LAST_DAY(SYSDATE)FROM dual;
+SELECT LAST_DAY(TO_DATE('25-05-2022','DD-MM-YYYY'))FROM dual;
+SELECT MONTHS_BETWEEN(TO_DATE('01-08-2022','DD-MM-YYYY'),
+TO_DATE('01-03-2022','DD-MM-YYYY'))FROM dual;
+
+SELECT NEXT_DAY(SYSDATE,'SUNDAY')FROM dual;
+
+SELECT LENGTH('ABC')FROM dual;
+
+SELECT last_name,LENGTH(last_name) FROM employee ORDER BY  LENGTH(last_name),last_name;
+SELECT CONCAT('Santosh','Honrao') FROM dual;
+
+SELECT LOWER('CHAITANYA')FROM dual;
+
+SELECT UPPER('chaitanya')FROM dual;
+
+SELECT TRIM('          HI          ')FROM dual;
+SELECT LENGTH('          HI          ')FROM dual;
+SELECT LENGTH(TRIM('          HI          '))FROM dual;
+
+CREATE TABLE  Challan_Header(
+challan_no VARCHAR(6) CHECK (challan_no LIKE 'CH%') ,
+s_order_no VARCHAR(6),
+challan_date DATE,
+billed_yn CHAR(1),
+CONSTRAINT pk_challan_no PRIMARY KEY(challan_no),
+CONSTRAINT fk_s_order_no1  FOREIGN KEY(s_order_no ) REFERENCES sales_order (s_order_no )
+
+);
+
+create table challan_details(
+challan_no varchar (6) constraint fornKeyCHALLANNO references Challan_header(challan_no),
+product_no varchar (6) constraint fornKeyPRODUCRNO references product_master(product_no),
+qty_disp number (4,2) not null,
+constraint prmKeyCHALLANNO_PRODUCTNO primary key(challan_no,product_no)
+);
+insert into sales_order_details values('O19001','P00001',4,4,525);
+insert into sales_order_details values('O19001','P07965',2,1,8400);
+insert into sales_order_details values('O19001','P07885',2,1,5250);
+insert into sales_order_details values('O19002','P00001',10,0,525);
+insert into sales_order_details values('O46865','P07868',3,3,3150);
+insert into sales_order_details values('O46865','P07885',3,1,5250);
+insert into sales_order_details values('O46865','P00001',10,10,525);
+insert into sales_order_details values('O46865','P03453',4,4,1050);
+insert into sales_order_details values('O19003','P03453',2,2,1050);
+insert into sales_order_details values('O19003','P06734',1,1,12000);
+insert into sales_order_details values('O46866','P07965',1,0,8400);
+insert into sales_order_details values('O46866','P07975',1,0,1050);
+insert into sales_order_details values('O19003','P00001',10,4,525);
+insert into sales_order_details values('O19003','P07975',5,3,1050);
+SELECT * FROM sales_order_details;
+
+insert into challan_header values('CH9001','O19001','12-Dec-1995','Y');
+insert into challan_header values('CH6865','O46865','12-Nov-1995','Y');
+insert into challan_header values('CH3965','O10008','12-Oct-1995','Y');
+SELECT * FROM challan_header;
+
+insert into challan_details values('CH9001','P00001',4);
+insert into challan_details values('CH9001','P07965',1);
+insert into challan_details values('CH9001','P07885',1);
+insert into challan_details values('CH6865','P07868',3);
+insert into challan_details values('CH6865','P03453',4);
+insert into challan_details values('CH6865','P00001',10);
+insert into challan_details values('CH3965','P00001',5);
+insert into challan_details values('CH3965','P07975',2);
+SELECT * FROM challan_details;
+
+select * from Client_master;
+select * from product_master;
+select * from salesman_master;
+select * from sales_order;
+select * from sales_order_details;
+select * from Challan_header;
+select * from Challan_details;
+
+SELECT name FROM client_master;
+SELECT * FROM client_master;
+SELECT name,city FROM client_master;
+SELECT Product_No,Description from  Product_master;
+SELECT name FROM client_master where   name LIKE('_a%');
+SELECT * FROM client_master where   city LIKE('_a%');
+SELECT * FROM client_master where   city IN('Bombay','Delhi','Madras');
+SELECT * FROM client_master where   city='Bombay';
+SELECT * FROM client_master where bal_due>=10000  ;
+SELECT * FROM sales_order where EXTRACT(month FROM  S_order_date)=1; 
+SELECT * FROM sales_order where Client_No in ('C00001','C00002') ;
+SELECT * from  Product_master  WHERE  Description IN('1.44 Drive','1.22 Drive');
+SELECT * from  Product_master WHERE  Sell_Price>=2000 and Sell_Price<=5000;
+SELECT Sell_Price,(sell_price*15)new_selling_price from  Product_master
+WHERE  Sell_Price>=1500;
+
+SELECT *from  Product_master
+WHERE  cost_Price<=1500;
+
+SELECT *from  Product_master
+ order by description;
+ 
+ SELECT SQRT(sell_price) from  Product_master;
+ 
+ SELECT name,city,state from  client_master
+ WHERE state not in('Maharashtra');
+ 
+SELECT *from  Product_master
+ WHERE description LIKE('M%');
+ 
+ SELECT * FROM sales_order where EXTRACT(month FROM  S_order_date)=05 and order_status='cancelled';
+ 
+ SELECT product_master.*,cost_price/(sell_price-100)as new_price
+ from product_master
+ where description='540 HDD';

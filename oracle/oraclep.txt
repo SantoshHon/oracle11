@@ -1,0 +1,128 @@
+
+CREATE TABLE employee(
+employee_id NUMBER(10),
+first_name VARCHAR(20),
+last_name VARCHAR(20),
+depart_name VARCHAR(20),
+salary NUMBER(10,2)
+);
+ALTER TABLE employee
+ADD joining_date DATE;
+DESC employee;
+--CREATE TABLE
+ALTER TABLE employee
+DROP COLUMN joining_date;
+DESC employee;
+ 
+ --ALTER TABLE
+ALTER TABLE employee
+MODIFY first_name VARCHAR(50);
+
+ALTER TABLE employee
+MODIFY (first_name VARCHAR(30),
+last_name VARCHAR(30));
+
+ALTER TABLE employee
+RENAME COLUMN depart_name To department_name;
+
+ALTER TABLE employee
+RENAME COLUMN first_name To fst_name;
+
+ALTER TABLE  employee RENAME TO employee_mindgate;
+
+--drop table
+DROP TABLE employee_mindgate;
+
+
+---CONSTRANTS
+CREATE TABLE employee(
+employee_id NUMBER(10) NOT NULL,
+first_name VARCHAR(20) NOT NULL,
+last_name VARCHAR(20) NOT NULL,
+depart_name VARCHAR(20) NOT NULL,
+salary NUMBER(10,2) NOT NULL
+);
+
+INSERT INTO employee
+VALUES (101,'Santosh','Honrao','traing',20000);
+
+
+---PRIMARY KEY
+
+CREATE TABLE purches_order(
+purchase_order_id NUMBER(10) PRIMARY KEY,
+company_name VARCHAR(50) NOT NULL,
+amount NUMBER(10,2) NOT NULL
+);
+--FOREIGN KEY
+
+CREATE TABLE employee(
+employee_id NUMBER(10),
+name VARCHAR(50),
+salary NUMBER(10,2),
+project_id NUMBER(10),
+CONSTRAINT pk_employee_id PRIMARY KEY(employee_id),
+CONSTRAINT fk_project_id FOREIGN KEY(project_id)
+REFERENCES project_details(project_id)
+);
+COMMIT;
+SELECT * FROM employee;
+INSERT INTO employee VALUES(101,'Santosh Honrao',1000,1);
+INSERT INTO employee VALUES(102,'shubham labade',3000,2);
+INSERT INTO employee VALUES(103,'Shashank l',8000,1);
+INSERT INTO employee VALUES(104,'Meraj s ',1000,2);
+INSERT INTO employee VALUES(105,'Rohit  ',1000,1);
+INSERT INTO employee VALUES(106,'Vaibhav T ',1000,3);
+INSERT INTO employee VALUES(107,'Nitesh s ',1000,2);
+INSERT INTO employee VALUES(108,' kiran m',1000,3);
+COMMIT;
+select * from employee;
+DELETE FROM project_details WHERE project_id= 1;
+COMMIT;
+
+
+----UNIQUE CON---
+CREATE TABLE employee(
+employee_id NUMBER(10),
+name   VARCHAR(20) NOT NULL,
+contact_number VARCHAR(10) NOT NULL UNIQUE,
+salary VARCHAR(20)
+);
+INSERT INTO employee
+VALUES(101,'test1','9978654312',1000);
+INSERT INTO employee
+VALUES(102,'test2','9978654312',2000);
+
+
+
+---check con-----
+CREATE TABLE employee(
+employee_id VARCHAR(10) CHECK (employee_id LIKE 'MGS%'),
+name   VARCHAR(20) NOT NULL,
+contact_number VARCHAR(10) NOT NULL UNIQUE,
+salary NUMBER(20)CHECK (salary>0)
+);
+
+INSERT INTO employee
+VALUES('MGS101','test1','9978654312',1000);
+INSERT INTO employee
+VALUES('MGS102','test2','9978652312',2000);
+
+--------DEFAULT-----
+CREATE TABLE employee(
+employee_id VARCHAR(10) ,
+name   VARCHAR(20) NOT NULL,
+contact_number VARCHAR(10) NOT NULL ,
+salary NUMBER(20),
+city VARCHAR(20) DEFAULT 'Mumbai'
+);
+INSERT INTO employee
+VALUES('MGS101','Santosh','997865312',1000,DEFAULT);
+select * from employee;
+INSERT INTO employee(employee_id,name,contact_number,salary)
+VALUES('MGS101','Santosh','997865312',1000);
+select * from employee;
+COMMIT;
+
+
+
